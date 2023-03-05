@@ -3,7 +3,6 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-    //public static User [] users = new User[5];
     public static Scanner scan = new Scanner(System.in);
 
 public static User[] getUsers() {
@@ -37,6 +36,11 @@ return  userSelected;
 }
 
     public static void validateUser(User user) throws AccessDeniedException{
+    if (user.getAge() < 18){
+        throw new AccessDeniedException("Возраст менее 18 лет");
+    }else {
+        System.out.println("Доступ предоставлен");
+    }
 
     }
     public static void main(String[] args) {
@@ -52,9 +56,11 @@ return  userSelected;
 
 
         try {
-            getUserByLoginAndPassword(log, pas);
+           validateUser(getUserByLoginAndPassword(log, pas));
         } catch (UserNotFoundException e) {
             System.out.println("Пользователь с таким логином и паролем не найден!");
+        } catch (AccessDeniedException e){
+            System.out.println("Возраст менее 18 лет");
         }
 
 
