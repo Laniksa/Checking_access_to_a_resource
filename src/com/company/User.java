@@ -12,6 +12,9 @@ public User (String login, String eMail, String password, int age ){
     this.password = password;
     this.age = age;
 }
+public User(){
+
+}
 
     public int getAge() {
         return age;

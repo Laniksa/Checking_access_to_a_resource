@@ -15,13 +15,16 @@ public static User[] getUsers() {
     User user5 = new User("katya", "katya@gmail.com", "pass5", 5);
     return new User[] {user1, user2, user3, user4, user5};
 }
-public static String getUserByLoginAndPassword(String login, String password) throws UserNotFoundException{
+public static User getUserByLoginAndPassword(String login, String password) throws UserNotFoundException{
     User[] users = getUsers();
     String str = "";
+    User userSelected = new User();
     boolean count = false;
         for (int i = 0; i < users.length; i++) {
             if (users[i].getLogin().equals(login) && users[i].getPassword().equals(password)) {
                 str = users[i].toString();
+                System.out.println(str);
+                userSelected = users[i];
 
                 break;
             }
@@ -30,10 +33,12 @@ public static String getUserByLoginAndPassword(String login, String password) th
             throw new UserNotFoundException("User not found");}
 
 
-    //if (count = false) {
-    System.out.println(str);
-return str;
+return  userSelected;
 }
+
+    public static void validateUser(User user) throws AccessDeniedException{
+
+    }
     public static void main(String[] args) {
 
 
