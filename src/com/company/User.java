@@ -8,8 +8,8 @@ public class User {
 
 public User (String login, String eMail, String password, int age ){
     this.login = login;
-    this.password = password;
     this.eMail = eMail;
+    this.password = password;
     this.age = age;
 }
 
